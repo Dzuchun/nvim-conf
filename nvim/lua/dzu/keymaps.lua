@@ -84,3 +84,6 @@ keymap(tm, '<ESC>', '<C-\\><C-n>:q<CR>', opts)
 keymap(tm, '<A-p>', 'python<CR><C-l>', opts)
 keymap(tm, '<A-l>', 'lua<CR><C-l>', opts)
 keymap(tm, '<A-o>', 'octave<CR><C-l>', opts)
+
+-- insert image
+keymap(nm, '<leader>p', '<ESC>:PasteImage<CR>', opts)

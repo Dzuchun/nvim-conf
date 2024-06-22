@@ -252,6 +252,25 @@ local plugins = {
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
     },
 
+    -- clipboard image inserting
+    {
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- file and directory options
+            dir_path = "~/.wiki/attachments", ---@type string
+            extension = "png", ---@type string
+            file_name = "%Y-%m-%d-%H-%M-%S", ---@type string
+            use_absolute_path = false, ---@type boolean
+            relative_to_current_file = false, ---@type boolean
+        },
+        --[[
+        keys = {
+            -- suggested keymap
+            {"<leader>p", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
+        },
+        ]]--
+    },
 
     -- floating temrinal
     {
