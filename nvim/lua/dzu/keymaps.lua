@@ -77,3 +77,10 @@ keymap(nm, '<leader>a', ':NvimTreeToggle<CR>', opts) -- open file explorer in th
 -- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 -- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 -- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+
+-- Floaterm keymaps
+keymap(nm, '<A-t>', '<ESC>:FloatermToggle myTerm<CR><C-l>', opts)
+keymap(tm, '<ESC>', '<C-\\><C-n>:q<CR>', opts)
+keymap(tm, '<A-p>', 'python<CR><C-l>', opts)
+keymap(tm, '<A-l>', 'lua<CR><C-l>', opts)
+keymap(tm, '<A-o>', 'octave<CR><C-l>', opts)
