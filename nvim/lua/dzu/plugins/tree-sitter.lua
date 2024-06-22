@@ -5,7 +5,37 @@ if not is_ok then
 end
 
 configs.setup {
-  ensure_installed = "all",
+    ensure_installed = {
+        "bash",
+        "c",
+        "comment",
+        "cpp",
+        "csv",
+        -- "cuda", -- not yet; might enable in the future
+        "djot",
+        "dockerfile", -- oh yeah. I should probably figure docker out...
+        "fish",
+        "gitignore",
+        -- "git_commit",
+        -- "haskell", -- not yet. will enable in the future
+        "html",
+        -- "javascript", -- not yet. might enable in the future
+        "json",
+        "latex",
+        "lua",
+        "luadoc",
+        "make",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "rust",
+        "sql",
+        "toml",
+        -- "typescript", -- not yet
+        "vim",
+        "vimdoc",
+        "xml",
+    },
   sync_install = false, 
   ignore_install = { "" }, -- List of parsers to ignore installing
   highlight = {
@@ -26,7 +56,6 @@ end
 local parser_configs = parsers.get_parser_configs()
 parser_configs.latex = {
     install_info = {
-        -- url = "~/Repositories/random/tree-sitter-latex/", -- local path or git repo
         url = "https://github.com/latex-lsp/tree-sitter-latex",
         files = {"src/parser.c", "src/scanner.c"}, -- note that some parsers also require src/scanner.c or src/scanner.cc
         -- optional entries:
@@ -35,6 +64,17 @@ parser_configs.latex = {
         requires_generate_from_grammar = true, -- if folder contains pre-generated src/parser.c
     },
     filetype = "tex", -- if filetype does not match the parser name
+}
+parser_configs.git_commit = {
+    install_info = {
+        url = "~/Repositories/random/tree-sitter-git-commit/",
+        files = {"src/parser.c"}, -- note that some parsers also require src/scanner.c or src/scanner.cc
+        -- optional entries:
+        -- branch = "master", -- default branch in case of git repo if different from master
+        generate_requires_npm = false, -- if stand-alone parser without npm dependencies
+        requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
+    },
+    filetype = "gitcommit", -- if filetype does not match the parser name
 }
 
 vim.cmd.TSUpdate()
