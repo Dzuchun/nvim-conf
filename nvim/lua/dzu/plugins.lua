@@ -156,14 +156,6 @@ local config = {
           paths = {}, -- add any custom paths here that you want to includes in the rtp
           ---@type string[] list any plugins you want to disable here
           disabled_plugins = {
-            -- "gzip",
-            -- "matchit",
-            -- "matchparen",
-            -- "netrwPlugin",
-            -- "tarPlugin",
-            -- "tohtml",
-            -- "tutor",
-            -- "zipPlugin",
           },
         },
       },
@@ -195,133 +187,63 @@ local config = {
       },
     } 
 
-local plugins = {
-    -- colorscheme
-    { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
+-- CRED: ME, I AM SMAAART 
+-- request low-level fs
+local is_ok, uv = pcall(require, 'luv')
+if not is_ok then
+    vim.notify("libuv was not found (a really bad thing, btw): "..uv)
+    return
+end
+-- open plugins dir
+local is_ok, d = pcall(uv.fs_opendir, vim.fn.stdpath('config')..'/lua/dzu/plugins/', nil, 999999)
+if not is_ok then
+    vim.notify("failed to open plugins dir: "..d)
+    return
+end
+if d == nil then
+    vim.notify("couldn't find plugins dir")
+    return
+end
 
-    -- statusline at the bottom
-    {
-        'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
-    },
+-- iterate over plugins dir
+local is_ok, files = pcall(uv.fs_readdir, d)
+if not is_ok then
+    vim.notify("failed to iterate over files in plugins dir: "..files)
+    return
+end
 
-    -- diffview
-    "sindrets/diffview.nvim",
+local plugins = {}
+for _, f in pairs(files) do
+    local name = f['name']
+    if name == '.' or name == '..' then
+        goto continue
+    end
+    if f['type'] ~= 'file' then
+        vim.notify('non-plugin file in plugins directory: '..name)
+        goto continue
+    end
+    if string.sub(name, -4) ~= '.lua' then
+        vim.notify('non-plugin file in plugins directory: '..name)
+        goto continue
+    end
+    local module_name = 'dzu.plugins.'..string.sub(name, 1, -5)
+    
+    local is_ok, mod = pcall(require, module_name)
+    if not is_ok then
+        vim.notify("Couldn't load plugin "..name)
+    end
+    table.insert(plugins, mod)
+    ::continue::
+end
 
-    -- file explorer
-    "nvim-tree/nvim-tree.lua",
-    --[[
-    {
-        'stevearc/oil.nvim',
-        opts = {},
-        -- Optional dependencies
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-    }
-    ]]--
 
-    -- tree sitter
-    "nvim-treesitter/nvim-treesitter",
+-- close plugins dir
+local is_ok, _ = pcall(uv.fs_closedir, d)
+if not is_ok then
+    vim.notify("failed to close plugins dir")
+    return
+end
 
-    -- completions
-    {
-        "hrsh7th/nvim-cmp",
-        dependencies = {
-            "saadparwaiz1/cmp_luasnip",
-            "L3MON4D3/LuaSnip",
-            "f3fora/cmp-spell",
-            -- "amarakon/nvim-cmp-lua-latex-symbols" -- unfortunately, these are not latex
-            -- completions, but rather unicode symbol inserter
-        }
-    },
+-- vim.notify("Lazy: "..#plugins.." plugins loaded")
 
-    -- snippets
-    {
-	    "L3MON4D3/LuaSnip",
-        -- follow latest release.
-        version = "v2.*",
-        build = "make install_jsregexp",
-        dependencies = {
-            "rafamadriz/friendly-snippets",
-        },
-    },
-
-    -- markdown rendering
-    {
-        'MeanderingProgrammer/markdown.nvim',
-        name = 'render-markdown', -- Only needed if you have another plugin named markdown.nvim
-        dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    },
-
-    -- clipboard image inserting
-    {
-        "HakonHarnes/img-clip.nvim",
-        event = "VeryLazy",
-        opts = {
-            -- file and directory options
-            dir_path = "~/.wiki/attachments", ---@type string
-            extension = "png", ---@type string
-            file_name = "%Y-%m-%d-%H-%M-%S", ---@type string
-            use_absolute_path = false, ---@type boolean
-            relative_to_current_file = false, ---@type boolean
-        },
-        --[[
-        keys = {
-            -- suggested keymap
-            {"<leader>p", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
-        },
-        ]]--
-    },
-
-    -- floating temrinal
-    {
-        "voldikss/vim-floaterm",
-        lazy = false
-    },
-
-    -- detecting and opening links
-    {
-    "sontungexpt/url-open",
-        event = "VeryLazy",
-        cmd = "URLOpenUnderCursor",
-        config = function()
-            local status_ok, url_open = pcall(require, "url-open")
-            if not status_ok then
-                return
-            end
-            url_open.setup ({
-                open_app = 'firefox',
-            })
-        end,
-    },
-}
-
--- manage plugins
 lazy.setup(plugins, config)
-
--- bottom statusline
-require 'dzu.plugins.lualine'
-
--- file diff
-require 'dzu.plugins.diffview'
-
--- file explorer
-require 'dzu.plugins.nvim-tree'
--- require 'dzu.plugins.oil'
-
--- tree sitter
-require 'dzu.plugins.tree-sitter'
-
--- cmp
-require 'dzu.cmp'
-
--- markdown rendering
-require 'dzu.plugins.markdown'
-
--- Autocommand that reloads neovim whenever you save the plugins.lua file
--- vim.cmd [[
---   augroup lazy_nvim_user_config
---    autocmd!
---     autocmd BufWritePost plugins.lua source <afile> | Lazy sync
---   augroup end
--- ]]
--- (good autocommand example anyway, so I'll keep it)

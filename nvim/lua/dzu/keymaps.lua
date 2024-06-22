@@ -15,10 +15,11 @@ vim.g.maplocalleader = " "
 -- Modes
 local nm = "n" -- normal mode
 local im = "i" -- insert mode
-local vm = "v" -- visual mode (selection?)
+local vm = "v" -- visual mode
 local vbm = "x" -- visual block
 local tm = "t" -- terminal
 local cm = "c" -- command (?)
+local sm = "s" -- I assume that s in select mode
 
 -- Normal --
 -- Window jumps with <Alt>+hjkl
@@ -63,6 +64,10 @@ keymap(nm, "sw", ":lua require('dzu.macro').toggle_whitespace_helpers()<CR>", op
 
 keymap(nm, 'a', '<Nop>', opts) -- I don't actually use this one
 keymap(nm, '<leader>a', ':NvimTreeToggle<CR>', opts) -- open file explorer in the current folder, shirnk it a bit, and move to the left-most
+
+-- pasting with <C-p> instead of p
+-- keymap(sm, '<C-p>', 'p', opts)
+-- keymap(sm, 'p', '<Nop>', opts)
 
 -- Visual Block --
 -- Move text up and down
