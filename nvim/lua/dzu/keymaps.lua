@@ -87,3 +87,6 @@ keymap(tm, '<A-o>', 'octave<CR><C-l>', opts)
 
 -- insert image
 keymap(nm, '<leader>p', '<ESC>:PasteImage<CR>', opts)
+
+-- open link under cursor
+keymap(nm, 'gx', '<ESC>:URLOpenUnderCursor<CR>', opts)
