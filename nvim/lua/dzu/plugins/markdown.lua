@@ -43,8 +43,6 @@ function config()
         -- Capture groups that get pulled from inline markdown
         inline_query = [[
             (code_span) @code
-
-            (shortcut_link) @callout
         ]],
         -- Executable used to convert latex formula to rendered unicode
         latex_converter = 'latex2text',
@@ -155,7 +153,7 @@ function config()
         },
     }
 
-    local is_ok, markdown = pcall(require, 'render-markdown')
+    local is_ok, markdown = pcall(require, 'markdown')
     if not is_ok then
         vim.notify("couldn't load markdown render")
         return 
@@ -165,7 +163,7 @@ end
 
 return {
     'MeanderingProgrammer/markdown.nvim',
-    name = 'render-markdown', -- Only needed if you have another plugin named markdown.nvim
+    -- name = 'render-markdown', -- Only needed if you have another plugin named markdown.nvim
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     config = config,
     lazy = false,
