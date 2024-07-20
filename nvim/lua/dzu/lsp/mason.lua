@@ -3,7 +3,7 @@ local servers = {
     -- "rust_analyzer", -- rust
     -- "pyright", -- has no code formatting
     -- "marksman", -- markdown
-    -- "tsserver", -- js, ts, tsx
+    "tsserver", -- js, ts, tsx
 }
 
 local settings = {
