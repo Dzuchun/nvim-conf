@@ -12,3 +12,6 @@ text_test
 
 # A tiny script I use to deploy this config locally
 loc_nvim
+
+# Don't want to share spell dictionaries
+nvim/spell/*
