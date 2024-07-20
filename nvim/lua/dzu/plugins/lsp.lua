@@ -13,10 +13,6 @@ return {
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
-        {
-            "hrsh7th/cmp-nvim-lsp",
-            lazy = false,
-        }, -- lsp suggestions
         -- "jose-elias-alvarez/null-ls.nvim",
         -- "jay-babu/mason-null-ls.nvim",
     },

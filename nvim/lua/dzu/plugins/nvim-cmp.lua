@@ -49,6 +49,19 @@ function config()
     }
     -- find more here: https://www.nerdfonts.com/cheat-sheet
 
+    local is_ok, cmp_config_context = pcall(require, 'cmp.config.context')
+    if not is_ok then
+        vim.notify("cmp config context was not found!")
+        return
+    end
+    local spell_options = {
+        keep_all_entries = false,
+        enable_in_context = function()
+            return cmp_config_context.in_treesitter_capture('spell')
+        end,
+        preselect_correct_word = false,
+    }
+
     cmp.setup {
         snippet = {
             expand = function(args)
@@ -124,19 +137,24 @@ function config()
                 vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
                 -- names of sources
                 vim_item.menu = ({
-                    nvim_lsp = "[lsp]",
+                    -- nvim_lsp = "[LSP]", -- TODO: no LSP, for now
                     luasnip = "[snip]",
                     -- buffer = "[Buffer]", -- TODO: no buffer, for now
                     -- path = "[Path]", -- TODO: no path, for now
+                    spell = "[spell]",
                 })[entry.source.name]
                 return vim_item
             end,
         },
         sources = {
-            { name = "nvim_lsp" },
+            -- { name = "nvim_lsp" }, -- TODO: no lsp (for now)
             { name = "luasnip" },
             -- { name = "buffer" }, -- TODO: no buffer (for now)
             -- { name = "path" }, -- TODO: no path (for now)
+            {
+                name = "spell",
+                option = spell_options,
+            },
         },
         -- (?)
         confirm_opts = {
@@ -177,6 +195,7 @@ return {
                 "rafamadriz/friendly-snippets",
             },
         },
+        "f3fora/cmp-spell",
         -- "amarakon/nvim-cmp-lua-latex-symbols" -- unfortunately, these are not latex
         -- completions, but rather unicode symbol inserter
     },

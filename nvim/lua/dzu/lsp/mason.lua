@@ -3,8 +3,6 @@ local servers = {
     "pyright",       -- has no code formatting
     "marksman",      -- markdown
     "tsserver",      -- js, ts, tsx
-    "harper_ls",     -- grammar
-    "lua_ls",        -- lua !
 }
 
 local settings = {
