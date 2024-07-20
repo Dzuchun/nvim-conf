@@ -1,0 +1,14 @@
+# lazy lock should not be staged (I guess?)
+nvim/lazy-lock.json
+
+# these are test folders with a bunch of random files.
+# I browse these to test if nvim behaves well
+fish
+jsx_test
+markdown_test
+python_test
+rust_test
+text_test
+
+# A tiny script I use to deploy this config locally
+loc_nvim
