@@ -4,8 +4,8 @@ vim.g.loaded_netrwPlugin = 1
 -- - s (default): copies options on creation
 -- - S: copies options each time
 local options = {
+    -- 'backspace',
     belloff = { -- which bell signals are muted
-        'backspace',
         'cursor',
         'complete',
         'copy',
