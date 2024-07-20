@@ -153,7 +153,7 @@ function config()
         },
     }
 
-    local is_ok, markdown = pcall(require, 'markdown')
+    local is_ok, markdown = pcall(require, 'render-markdown')
     if not is_ok then
         vim.notify("couldn't load markdown render")
         return 
