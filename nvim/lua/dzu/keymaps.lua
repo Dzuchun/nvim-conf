@@ -95,3 +95,10 @@ keymap(nm, '<leader>p', '<ESC>:PasteImage<CR>', opts)
 
 -- open link under cursor
 keymap(nm, 'gx', '<ESC>:URLOpenUnderCursor<CR>', opts)
+
+-- add Ukrainian kb layout support
+vim.cmd("set langmap=йq,цw,уe,кr,еt,нy,гu,шi,щo,зp,х[,ї],фa,іs,вd,аf,пg,рh,оj,лk,дl,ж\\\\;,\\є',ґ\\\\,яz,чx,сc,мv,иb,тn,ьm,б\\\\,,ю.,,ЙQ,ЦW,УE,КR,ЕT,НY,НY,ГU,ШI,ЩO,ЗP,Х{,Ї},ФA,\\ІS,ВD,АF,ПG,РH,ОJ,ЛK,ДL,Ж\\\\:,Є\\\\\",Ґ\\|,ЯZ,ЧX,СC,МV,ИB,ТN,ЬM,Б\\\\<,Ю>,№#")
+-- add primitive commands for Ukrainian keyboard
+vim.cmd("cnoreabbrev <expr> ц ((getcmdtype() is# ':' && getcmdline() is# 'ц')?('w'):('ц'))")
+vim.cmd("cnoreabbrev <expr> й ((getcmdtype() is# ':' && getcmdline() is# 'й')?('q'):('й'))")
+vim.cmd("cnoreabbrev <expr> цй ((getcmdtype() is# ':' && getcmdline() is# 'цй')?('wq'):('цй'))")
