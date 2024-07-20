@@ -20,7 +20,10 @@ function config()
             -- "git_commit",
             -- "haskell", -- not yet. will enable in the future
             "html",
-            -- "javascript", -- not yet. might enable in the future
+            "javascript",
+            "typescript",
+            -- "jsx",
+            "tsx",
             "json",
             "latex",
             "lua",
@@ -32,7 +35,6 @@ function config()
             "rust",
             "sql",
             "toml",
-            -- "typescript", -- not yet
             "vim",
             "vimdoc",
             "xml",
@@ -66,6 +68,7 @@ function config()
         },
         filetype = "tex", -- if filetype does not match the parser name
     }
+    -- git commit parser
     parser_configs.git_commit = {
         install_info = {
             url = "~/Repositories/random/tree-sitter-git-commit/",
