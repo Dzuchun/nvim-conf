@@ -61,8 +61,10 @@ local options = {
     listchars = 'eol:↩,multispace:   |,trail:-', -- add binding to toggle these
 
     -- spellcheck
+    --[[
     spell = true,
     spelllang = "en_us,uk",
+    ]]--
 
     -- clipboard
     clipboard = 'unnamedplus',

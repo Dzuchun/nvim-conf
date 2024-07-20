@@ -97,6 +97,7 @@ end
 local is_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not is_ok then
     vim.notify("failed to find LSP snippet source")
+    return
 end
 M.capabilities = cmp_nvim_lsp.default_capabilities()
 
