@@ -1,4 +1,4 @@
-function config()
+local function config()
     local is_ok, lint = pcall(require, 'lint')
     if not is_ok then
         vim.notify("Failed to setup lint");
@@ -26,5 +26,5 @@ end
 return {
     "mfussenegger/nvim-lint",
     config = config,
-    lazy=false,
+    lazy = false,
 }

@@ -1,4 +1,4 @@
-function config()
+local function config()
     local is_ok, jupynium = pcall(require, 'jupynium')
     if not is_ok then
         vim.notify("Failed to get jupynium (jupyter connector)")

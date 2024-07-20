@@ -1,5 +1,4 @@
-
-function config()
+local function config()
     local is_ok, cmp = pcall(require, "cmp")
     if not is_ok then
         vim.notify "Couldn't load cmp (base)"
@@ -165,7 +164,7 @@ function config()
         --[[ documentation = {
             border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
         },
-        ]]--
+        ]]                      --
         experimental = {
             ghost_text = false, -- EDIT: I DON'T WANNA GHOST TEXT, IT CONFUSES SO MUCH OMG
             native_menu = false,
@@ -177,7 +176,7 @@ function config()
         sources = {
             { name = "luasnip" },
             -- { name = "lua-latex-symbols", option = { cache = true } },
-            { name = "spell", option = spell_options },
+            { name = "spell",  option = spell_options },
         }
     })
 end
@@ -202,4 +201,3 @@ return {
     config = config,
     lazy = false,
 }
-

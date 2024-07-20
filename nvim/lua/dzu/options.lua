@@ -24,7 +24,7 @@ local options = {
     },
     showbreak = '↪ ', -- line break symbol itself
     cdhome = false, -- do not cd to home on :cd (won't work?)
-    cedit='', -- no kinding to open CL window (?)
+    cedit = '', -- no kinding to open CL window (?)
     -- cmdheight = 7, -- number of lines for cmd
     colorcolumn = '+1,+2', -- highlight 2 columns after textwidth -- add autocmp to disable this in readonly buffers
     textwidth = 90, -- default number of chars per line
@@ -38,7 +38,7 @@ local options = {
     debug = 'msg', -- tell me about problems, please
     -- see digraphs, to enable латинка!
     display = 'lastline,uhex', -- print unprintable chars in HEX (last line kinda won't work?)
-    errorbells = true, -- sound on errors       
+    errorbells = true, -- sound on errors
     exrc = true, -- execute possible local config
     fillchars = 'diff:<',
     foldlevelstart = 0, -- at start, close all folds...
@@ -71,4 +71,3 @@ local options = {
 for k, v in pairs(options) do
     vim.opt[k] = v
 end
-

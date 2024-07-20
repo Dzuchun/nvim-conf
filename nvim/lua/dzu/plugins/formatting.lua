@@ -1,4 +1,4 @@
-function config()
+local function config()
     local is_ok, conform = pcall(require, 'conform')
     if not is_ok then
         vim.notify("failed to setup conform (formatting plugin)")
@@ -12,7 +12,6 @@ function config()
         formatters_by_ft = {
             -- lua = { "stylua" },
             python = { "black" },
-            -- Use a sub-list to run only the first available formatter
             javascript = web_fmt,
             javascriptreact = web_fmt,
             typescript = web_fmt,
@@ -24,32 +23,7 @@ function config()
             timeout_ms = 1000,
             lsp_format = "fallback",
         },
-        formatters = {
-            -- Appears to be ignored
-            --[[
-            biome = {
-                formatter= {
-                    enabled= true,
-                    formatWithErrors= false,
-                    -- ignore = {},
-                    attributePosition= "auto",
-                    indentStyle= "space",
-                    indentWidth= 4,
-                    lineWidth= 90,
-                    -- lineEnding= "lf"
-                },
-                organizeImports= {
-                    enabled= true
-                },
-                linter= {
-                    enabled= true,
-                    rules= {
-                        recommended= true
-                    }
-                }
-            }
-            ]]--
-        },
+        formatters = {},
     }
 
     conform.setup(opts)

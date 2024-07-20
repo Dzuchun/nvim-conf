@@ -19,7 +19,7 @@ return {
                 },
                 snippets = {
                     custom = {
-                         -- custom completion snippets here!
+                        -- custom completion snippets here!
                     }
                 },
                 termSearch = {

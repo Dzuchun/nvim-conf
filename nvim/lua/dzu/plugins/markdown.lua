@@ -1,6 +1,6 @@
-function config()
+local function config()
     -- CRED: markdown.nvim help page
-    config = {
+    local opts = {
         -- Whether Markdown should be rendered by default or not
         start_enabled = true,
         -- Whether LaTeX should be rendered, mainly used for health check
@@ -29,9 +29,6 @@ function config()
                 (list_marker_star)
             ] @list_marker
 
-            (task_list_marker_unchecked) @checkbox_unchecked
-            (task_list_marker_checked) @checkbox_checked
-
             (block_quote (block_quote_marker) @quote_marker)
             (block_quote (paragraph (inline (block_continuation) @quote_marker)))
 
@@ -52,7 +49,7 @@ function config()
         -- Filetypes this plugin will run on
         file_types = { 'markdown' },
         -- Vim modes that will show a rendered view of the markdown file
-        -- All other modes will be uneffected by this plugin
+        -- All other modes will be unaffected by this plugin
         render_modes = { 'n', 'c' },
         -- Characters that will replace the # at the start of headings
         headings = { '󰲡 ', '󰲣 ', '󰲥 ', '󰲧 ', '󰲩 ', '󰲫 ' },
@@ -156,9 +153,9 @@ function config()
     local is_ok, markdown = pcall(require, 'render-markdown')
     if not is_ok then
         vim.notify("couldn't load markdown render")
-        return 
+        return
     end
-    markdown.setup(config)
+    markdown.setup(opts)
 end
 
 return {

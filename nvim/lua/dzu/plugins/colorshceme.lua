@@ -1,6 +1,6 @@
-function config()
+local function config()
     local colorscheme = "moonfly"
-    vim.g.moonflyItalics = false -- I don't like comments being italic, srry
+    vim.g.moonflyItalics = false    -- I don't like comments being italic, srry
     vim.g.moonflyNormalFloat = true -- style floating windows with moonfly too!
     -- vim.g.moonflyUnderlineMatchParen = true -- emph matching parens
 
