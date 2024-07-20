@@ -1,5 +1,5 @@
 require 'dzu.options'
 require 'dzu.keymaps'
+require 'dzu.macro'
 require 'dzu.plugins'
 -- require 'dzu.colorscheme'
-require 'dzu.macro'
