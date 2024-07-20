@@ -4,7 +4,7 @@ return {
     opts = {
         default = {
             -- file and directory options
-            dir_path = "~/.wiki/attachments", ---@type string
+            dir_path = "/home/dzu/.wiki/attachments/", ---@type string
             extension = "png", ---@type string
             file_name = "%Y-%m-%d-%H-%M-%S", ---@type string
             use_absolute_path = false, ---@type boolean
