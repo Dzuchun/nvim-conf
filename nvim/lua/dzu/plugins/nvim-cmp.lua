@@ -136,7 +136,7 @@ local function config()
                 vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
                 -- names of sources
                 vim_item.menu = ({
-                    -- nvim_lsp = "[LSP]", -- TODO: no LSP, for now
+                    nvim_lsp = "[lsp]",
                     luasnip = "[snip]",
                     -- buffer = "[Buffer]", -- TODO: no buffer, for now
                     -- path = "[Path]", -- TODO: no path, for now
@@ -146,7 +146,7 @@ local function config()
             end,
         },
         sources = {
-            -- { name = "nvim_lsp" }, -- TODO: no lsp (for now)
+            { name = "nvim_lsp" },
             { name = "luasnip" },
             -- { name = "buffer" }, -- TODO: no buffer (for now)
             -- { name = "path" }, -- TODO: no path (for now)
