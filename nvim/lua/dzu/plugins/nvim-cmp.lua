@@ -62,6 +62,7 @@ local function config()
     }
 
     cmp.setup {
+        preselect = cmp.PreselectMode.None,
         snippet = {
             expand = function(args)
                 luasnip.lsp_expand(args.body) -- For `luasnip` users. -- yep, I'm the one
