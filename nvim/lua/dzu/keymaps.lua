@@ -34,10 +34,6 @@ keymap(nm, "<A-Down>", ":resize +2<CR>", opts)
 keymap(nm, "<A-Left>", ":vertical resize -2<CR>", opts)
 keymap(nm, "<A-Right>", ":vertical resize +2<CR>", opts)
 
--- Stop o and O from going into insert mode, that's not what I usually want
-keymap(nm, "o", "o<ESC>", opts)
-keymap(nm, "O", "O<ESC>", opts)
-
 -- Visual --
 -- Move selected text with <Alt>+hjkl
 keymap(vm, "<A-h>", "<gv", opts)
@@ -83,3 +79,9 @@ vim.cmd(
 vim.cmd("cnoreabbrev <expr> ц ((getcmdtype() is# ':' && getcmdline() is# 'ц')?('w'):('ц'))")
 vim.cmd("cnoreabbrev <expr> й ((getcmdtype() is# ':' && getcmdline() is# 'й')?('q'):('й'))")
 vim.cmd("cnoreabbrev <expr> цй ((getcmdtype() is# ':' && getcmdline() is# 'цй')?('wq'):('цй'))")
+
+-- Stop o and O from going into insert mode, that's not what I usually want
+keymap(nm, "o", "o<esc>", opts)
+keymap(nm, "O", "O<esc>", opts)
+keymap(nm, "щ", "o<esc>", opts)
+keymap(nm, "Щ", "O<esc>", opts)
