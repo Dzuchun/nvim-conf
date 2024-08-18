@@ -18,7 +18,7 @@ local function config()
             "fish",
             "gitignore",
             -- "git_commit",
-            -- "haskell", -- not yet. will enable in the future
+            "haskell",
             "html",
             "javascript",
             "typescript",
