@@ -12,12 +12,15 @@ local function config()
         typescript = web_linters,
         typescriptreact = web_linters,
         json = web_linters,
+        haskell = { 'hlint' },
+        lhaskell = { 'hlint' },
+        cabal = { 'hlint' },
     }
 
     -- autolint on save
     vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {
-        pattern = { "*.js", "*.ts", "*.jsx", ".tsx", "*.json" },
-        callback = function(ev)
+        pattern = { "*.js", "*.ts", "*.jsx", "*.tsx", "*.json", "*.hs" },
+        callback = function(_)
             lint.try_lint()
         end,
     })
