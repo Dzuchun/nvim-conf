@@ -17,6 +17,9 @@ local function config()
             typescript = web_fmt,
             typescriptreact = web_fmt,
             json = web_fmt,
+            haskell = { "fourmolu" },
+            lhaskell = { "fourmolu" },
+            cabal = { "fourmolu" },
         },
         format_on_save = {
             -- These options will be passed to conform.format()
