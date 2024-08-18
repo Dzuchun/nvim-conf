@@ -180,6 +180,14 @@ local function config()
             { name = "spell",  option = spell_options },
         }
     })
+
+    -- haskell specific snippets
+    cmp.setup.filetype({ "haskell", "lhaskell", "cabal" }, {
+        sources = {
+            { name = "luasnip" },
+            { name = "spell",  option = spell_options },
+        }
+    })
 end
 
 return {
