@@ -4,6 +4,7 @@ local servers = {
     "marksman",      -- markdown
     "tsserver",      -- js, ts, tsx
     "lua_ls",
+    "hls",
 }
 
 local settings = {
