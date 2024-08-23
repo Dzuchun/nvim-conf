@@ -200,6 +200,10 @@ for _, f in pairs(files) do
         vim.notify('non-plugin file in plugins directory: ' .. name)
         goto continue
     end
+    if string.sub(name, -5) == '.lua_' then
+        -- That's a temporary-disabled files, just ignore it
+        goto continue
+    end
     if string.sub(name, -4) ~= '.lua' then
         vim.notify('non-plugin file in plugins directory: ' .. name)
         goto continue
