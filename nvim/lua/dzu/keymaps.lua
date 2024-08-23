@@ -86,3 +86,8 @@ keymap(nm, "o", "o<esc>", opts)
 keymap(nm, "O", "O<esc>", opts)
 keymap(nm, "щ", "o<esc>", opts)
 keymap(nm, "Щ", "O<esc>", opts)
+
+keymap(nm, "<leader>\\", ":DiffviewOpen<CR>", opts)
+keymap(nm, "<leader>|", ":DiffviewClose<CR>", opts)
+keymap(nm, "<leader>g", ":diffget<CR>", opts)
+keymap(nm, "<leader><C-g>", ":DiffviewRefresh<CR>", opts)
