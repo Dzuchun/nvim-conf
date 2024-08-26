@@ -3,6 +3,7 @@ local servers = {
     "pyright",       -- has no code formatting
     "marksman",      -- markdown
     "tsserver",      -- js, ts, tsx
+    "clangd",        -- C
     "lua_ls",
     "hls",
 }
