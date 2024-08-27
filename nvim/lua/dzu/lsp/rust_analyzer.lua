@@ -12,6 +12,7 @@ return {
             },
             cargo = {
                 -- allTargets = false,
+                allFeatures = true,
             },
             completion = {
                 fullFunctionSignatures = {
