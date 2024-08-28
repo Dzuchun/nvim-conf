@@ -197,7 +197,7 @@ for _, f in pairs(files) do
         goto continue
     end
     if f['type'] ~= 'file' then
-        vim.notify('non-plugin file in plugins directory: ' .. name)
+        vim.notify('non-file file in plugins directory: ' .. name)
         goto continue
     end
     if string.sub(name, -5) == '.lua_' then
