@@ -169,15 +169,6 @@ local function config()
         },
     }
 
-    -- (la)tex specific snippets
-    cmp.setup.filetype({ "tex", "plaintex" }, {
-        sources = {
-            { name = "luasnip" },
-            -- { name = "lua-latex-symbols", option = { cache = true } },
-            { name = "spell",  option = spell_options },
-        }
-    })
-
     -- haskell specific snippets
     cmp.setup.filetype({ "haskell", "lhaskell", "cabal" }, {
         sources = {
