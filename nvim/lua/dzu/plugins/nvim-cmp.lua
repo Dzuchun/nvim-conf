@@ -63,6 +63,42 @@ local function config()
         preselect_correct_word = false,
     }
 
+    local function jump_forward(fallback)
+        if luasnip.jumpable(1) then
+            luasnip.jump(1)
+        else
+            fallback()
+        end
+    end
+
+    local function jump_back(fallback)
+        if luasnip.jumpable(-1) then
+            luasnip.jump(-1)
+        else
+            fallback()
+        end
+    end
+
+    local function tab_front(fallback)
+        if cmp.visible() then
+            cmp.select_next_item()
+        elseif luasnip.expandable() then
+            luasnip.expand()
+        elseif check_backspace() then
+            fallback()
+        else
+            fallback()
+        end
+    end
+
+    local function tab_back(fallback)
+        if cmp.visible() then
+            cmp.select_prev_item()
+        else
+            fallback()
+        end
+    end
+
     cmp.setup {
         preselect = cmp.PreselectMode.None,
         snippet = {
@@ -71,9 +107,9 @@ local function config()
             end,
         },
         mapping = {
-            -- CTRL-+- for item selection
-            ["<C-=>"] = cmp.mapping.select_prev_item(),
-            ["<C-->"] = cmp.mapping.select_next_item(),
+            -- CTRL--= for snippet jumping
+            ["<C-=>"] = jump_forward,
+            ["<C-->"] = jump_back,
 
             -- CTRL-bf for scrolling docs
             ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
@@ -95,28 +131,14 @@ local function config()
             -- UBERTAB setup or th
             -- Expand or fallback
             ["<Tab>"] = cmp.mapping(
-                function(fallback)
-                    if luasnip.expand_or_jumpable() then
-                        luasnip.expand_or_jump()
-                    else
-                        fallback()
-                    end
-                end, {
-                    "i", -- use only in isert & select mode (?)
+                tab_front, {
+                    "i",
                     "s",
                 }
             ),
             -- USERTAB back setup or th
             ["<S-Tab>"] = cmp.mapping(
-                function(fallback)
-                    if cmp.visible() then
-                        cmp.select_prev_item()
-                    elseif luasnip.jumpable(-1) then
-                        luasnip.jump(-1)
-                    else
-                        fallback()
-                    end
-                end, {
+                tab_back, {
                     "i",
                     "s",
                 }
