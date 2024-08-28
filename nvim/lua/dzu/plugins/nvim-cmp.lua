@@ -11,6 +11,8 @@ local function config()
         return
     end
 
+    luasnip.config.setup({ enable_autosnippets = true })
+
     require("luasnip/loaders/from_vscode").lazy_load()
 
     local check_backspace = function()
@@ -69,9 +71,9 @@ local function config()
             end,
         },
         mapping = {
-            -- CTRL-jk for item selection
-            ["<C-k>"] = cmp.mapping.select_prev_item(),
-            ["<C-j>"] = cmp.mapping.select_next_item(),
+            -- CTRL-+- for item selection
+            ["<C-=>"] = cmp.mapping.select_prev_item(),
+            ["<C-->"] = cmp.mapping.select_next_item(),
 
             -- CTRL-bf for scrolling docs
             ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
@@ -91,16 +93,11 @@ local function config()
             ["<CR>"] = cmp.mapping.confirm { select = false },
 
             -- UBERTAB setup or th
+            -- Expand or fallback
             ["<Tab>"] = cmp.mapping(
                 function(fallback)
-                    if cmp.visible() then
-                        cmp.select_next_item()
-                    elseif luasnip.expandable() then
-                        luasnip.expand()
-                    elseif luasnip.expand_or_jumpable() then
+                    if luasnip.expand_or_jumpable() then
                         luasnip.expand_or_jump()
-                    elseif check_backspace() then
-                        fallback()
                     else
                         fallback()
                     end
