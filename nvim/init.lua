@@ -1,5 +1,10 @@
 require 'dzu.options'
+
 require 'dzu.keymaps'
-require 'dzu.macro'
+
+local macro = require 'dzu.macro'
+macro.toggle_whitespace_helpers()
+
 require 'dzu.plugins'
--- require 'dzu.colorscheme'
+
+require 'dzu.snippets'
