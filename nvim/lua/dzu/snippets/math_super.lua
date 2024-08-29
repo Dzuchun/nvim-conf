@@ -37,14 +37,10 @@ return {
     replace_after_word("cb", "^3"),
     replace_after_word("inv", "^{-1}"),
     s({
-        trig = "\\wrd",
+        trig = "rd",
         condition = mathzone,
         snippetType = "autosnippet",
         wordTrig = false,
-        trigEngine = "ecma",
-        resolveExpandParams = function(_, _, matched_trigger, _)
-            return { trigger = string.sub(matched_trigger, -2, -1) }
-        end,
     }, { t("^{"), i(1), t("}") }, {}),
     s({
         trig = "ee",
