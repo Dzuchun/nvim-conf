@@ -88,4 +88,52 @@ function M.in_mathzone()
     end
 end
 
+function M.suffix_paren_content(line)
+    local i = string.len(line)
+    if string.sub(line, i, i) ~= ')' then
+        return ""
+    end
+    i = i - 1
+    local depth = 1
+    while i >= 1 and depth > 0 do
+        if string.sub(line, i, i) == ')' then
+            depth = depth + 1
+        elseif string.sub(line, i, i) == '(' then
+            depth = depth - 1
+        end
+        i = i - 1
+    end
+    if depth ~= 0 then
+        return ""
+    end
+    return string.sub(line, i + 2, -2)
+end
+
+local NON_WORD = { '{', '}', ')', '(', ' ', '\t' }
+function M.last_word(line)
+    local i = string.len(line)
+    while i > 0 do
+        local c = string.sub(line, i, i)
+        for _, val in pairs(NON_WORD) do
+            if val == c then
+                goto outer
+            end
+        end
+        i = i - 1
+    end
+    ::outer::
+    return string.sub(line, i + 1, -1)
+end
+
+-- CRED: https://ejmastnak.com/tutorials/vim-latex/luasnip/#advanced-nodes
+--
+-- This is the `get_visual` function I've been talking about.
+-- ----------------------------------------------------------------------------
+-- Summary: When `LS_SELECT_RAW` is populated with a visual selection, the function
+-- returns an insert node whose initial text is set to the visual selection.
+-- When `LS_SELECT_RAW` is empty, the function simply returns an empty insert node.
+function M.get_visual(snippet)
+    return snippet.env.LS_SELECT_RAW
+end
+
 return M

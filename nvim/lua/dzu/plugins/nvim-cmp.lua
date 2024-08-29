@@ -11,7 +11,11 @@ local function config()
         return
     end
 
-    luasnip.config.setup({ enable_autosnippets = true })
+    luasnip.config.setup({
+        enable_autosnippets = true,
+        -- Use <Tab> (or some other key if you prefer) to trigger visual selection
+        store_selection_keys = "<Tab>",
+    })
 
     require("luasnip/loaders/from_vscode").lazy_load()
 
