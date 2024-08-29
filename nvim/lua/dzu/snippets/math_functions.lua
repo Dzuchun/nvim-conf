@@ -36,7 +36,7 @@ local function func_snip(func_name, priority)
         condition = mathzone,
         snippetType = "autosnippet",
         priority = priority,
-    }, fmt([[\text{{{}}}\left({}\right)]], { t(func_name), i(1) }), {})
+    }, fmt([[(\text{{{}}}\left({}\right))]], { t(func_name), i(1) }), {})
 end
 
 local function func_snip_add(func_name, add)
