@@ -50,7 +50,8 @@ for _, f in pairs(files) do
 
     local is_ok, mod = pcall(require, module_name)
     if not is_ok then
-        vim.notify("Couldn't load snippets " .. name)
+        vim.notify("Couldn't load snippets " .. name .. " error: " .. mod)
+        goto continue
     end
     local filetype = mod.ft
     if filetype == nil then
