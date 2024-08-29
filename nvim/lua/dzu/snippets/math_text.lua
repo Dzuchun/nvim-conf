@@ -38,7 +38,7 @@ return {
         condition = mathzone,
         priotiry = 100,
     }, {
-        t("\\text{"), i(1), t("}")
+        t("\\text{ "), i(1), t(" }")
     }, {}),
     s({
         trig = "text",
@@ -46,6 +46,6 @@ return {
         snippetType = "autosnippet",
         wordTrig = false,
     }, {
-        t("\\text{"), i(1), t("}")
+        t("\\text{ "), i(1), t(" }")
     }, {})
 }
