@@ -67,19 +67,15 @@ local function config()
         preselect_correct_word = false,
     }
 
-    local function jump_forward(fallback)
+    local function jump_forward(_)
         if luasnip.jumpable(1) then
             luasnip.jump(1)
-        else
-            fallback()
         end
     end
 
-    local function jump_back(fallback)
+    local function jump_back(_)
         if luasnip.jumpable(-1) then
             luasnip.jump(-1)
-        else
-            fallback()
         end
     end
 

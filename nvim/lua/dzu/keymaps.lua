@@ -19,7 +19,7 @@ local vm = "v"  -- visual mode
 local vbm = "x" -- visual block
 local tm = "t"  -- terminal
 local cm = "c"  -- command (?)
-local sm = "s"  -- I assume that s in select mode
+local sm = "s"  -- selection mode
 
 -- Normal --
 -- Window jumps with <Alt>+hjkl
@@ -91,3 +91,8 @@ keymap(nm, "<leader>\\", ":DiffviewOpen<CR>", opts)
 keymap(nm, "<leader>|", ":DiffviewClose<CR>", opts)
 keymap(nm, "<leader>g", ":diffget<CR>", opts)
 keymap(nm, "<leader><C-g>", ":DiffviewRefresh<CR>", opts)
+
+keymap(sm, "-", "<Nop>", opts)
+keymap(sm, "=", "<Nop>", opts)
+keymap(sm, "<C-->", "<ESC>i<C-->", { silent = true })
+keymap(sm, "<C-=>", "<ESC>a<C-=>", { silent = true })
