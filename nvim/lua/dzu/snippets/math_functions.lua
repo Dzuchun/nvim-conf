@@ -65,4 +65,5 @@ return {
     func_snip_add("cos", "h"),
     func_snip_add("tan", "h"),
     func_snip_add("cot", "h"),
+    func_snip("erf"),
 }
