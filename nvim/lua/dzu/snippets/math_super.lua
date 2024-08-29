@@ -45,5 +45,10 @@ return {
         resolveExpandParams = function(_, _, matched_trigger, _)
             return { trigger = string.sub(matched_trigger, -2, -1) }
         end,
-    }, { t("^{"), i(1), t("}") }, {})
+    }, { t("^{"), i(1), t("}") }, {}),
+    s({
+        trig = "ee",
+        condition = mathzone,
+        snippetType = "autosnippet",
+    }, { t("e^{"), i(1), t("}"), }, {})
 }
