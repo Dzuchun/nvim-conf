@@ -103,4 +103,28 @@ return {
             end)
         }
         , {}),
+    s({
+            trig = "dot",
+            condition = mathzone,
+            snippetType = "autosnippet",
+            priority = 10,
+        },
+        fmt("\\dot{{{}}}", i(1))
+        , {}),
+    s({
+            trig = "ddot",
+            condition = mathzone,
+            snippetType = "autosnippet",
+            priority = 10,
+        },
+        fmt("\\ddot{{{}}}", i(1))
+        , {}),
+    s({
+            trig = "und",
+            condition = mathzone,
+            snippetType = "autosnippet",
+            priority = 10,
+        },
+        fmt("\\underline{{{}}}", i(1))
+        , {}),
 }
