@@ -2,11 +2,21 @@ local servers = {
     "rust_analyzer", -- rust
     "pyright",       -- has no code formatting
     "marksman",      -- markdown
-    "tsserver",      -- js, ts, tsx
+    "ts_ls",         -- js, ts, tsx
     "clangd",        -- C
     "lua_ls",
     "hls",
 }
+
+-- lspconfig needs tsserver, while mason itself needs ts_ls
+local lspconfig_servers = {}
+for _, server in pairs(servers) do
+    if server == "ts_ls" then
+        table.insert(lspconfig_servers, "tsserver");
+    else
+        table.insert(lspconfig_servers, server);
+    end
+end
 
 local settings = {
     ui = {
@@ -23,7 +33,7 @@ local settings = {
 
 require("mason").setup(settings)
 require("mason-lspconfig").setup({
-    ensure_installed = servers,
+    ensure_installed = lspconfig_servers,
     automatic_installation = true,
 })
 
