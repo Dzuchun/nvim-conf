@@ -8,16 +8,6 @@ local servers = {
     "hls",
 }
 
--- lspconfig needs tsserver, while mason itself needs ts_ls
-local lspconfig_servers = {}
-for _, server in pairs(servers) do
-    if server == "ts_ls" then
-        table.insert(lspconfig_servers, "tsserver");
-    else
-        table.insert(lspconfig_servers, server);
-    end
-end
-
 local settings = {
     ui = {
         border = "none",
@@ -33,7 +23,7 @@ local settings = {
 
 require("mason").setup(settings)
 require("mason-lspconfig").setup({
-    ensure_installed = lspconfig_servers,
+    ensure_installed = servers,
     automatic_installation = true,
 })
 
