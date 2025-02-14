@@ -21,6 +21,7 @@ remove_bin:
 
 nvim/spell/uk.utf-8.spl:
 	@wget https://ftp.nluug.nl/pub/vim/runtime/spell/uk.utf-8.spl
+	@mkdir -p nvim/spell
 	@mv uk.utf-8.spl nvim/spell
 
 CONFIG_FILES = $(shell cd nvim; find -name "*.lua") spell/uk.utf-8.spl
