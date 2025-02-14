@@ -16,6 +16,7 @@ local options = {
     },
     -- visualbell = true, -- FLASHES THE SCREEN
     -- binary - check out binary file viewing and editing
+    linebreak = true,
     breakat = " ^I!@*-+;:,./?", -- where line breaks are allowed
     -- breakindent = true, -- line breaks continue where the line starts
     breakindentopt = {
