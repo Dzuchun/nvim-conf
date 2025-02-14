@@ -21,13 +21,18 @@ local function config()
             lhaskell = { "fourmolu" },
             cabal = { "fourmolu" },
             nix = { "nixfmt" },
+            cpp = { "clang-format" },
         },
         format_on_save = {
             -- These options will be passed to conform.format()
             timeout_ms = 1000,
             lsp_format = "fallback",
         },
-        formatters = {},
+        formatters = {
+            ["clang-format"] = {
+                command = "clang-format --style",
+            }
+        },
     }
 
     conform.setup(opts)
