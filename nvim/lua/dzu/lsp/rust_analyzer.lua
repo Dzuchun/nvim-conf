@@ -88,7 +88,15 @@ return {
                     '-A', 'clippy::uninlined_format_args',
                     '-A', 'clippy::module_name_repetitions',
                 }
-            }
+            },
+            procMacro = {
+                ignored = {
+                    leptos_macro = {
+                        -- "component",
+                        "server",
+                    },
+                },
+            },
         }
     }
 }
