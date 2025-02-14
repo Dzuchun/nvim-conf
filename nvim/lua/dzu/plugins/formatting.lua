@@ -20,6 +20,7 @@ local function config()
             haskell = { "fourmolu" },
             lhaskell = { "fourmolu" },
             cabal = { "fourmolu" },
+            nix = { "nixfmt" },
         },
         format_on_save = {
             -- These options will be passed to conform.format()
