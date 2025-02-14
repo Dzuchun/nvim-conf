@@ -42,6 +42,14 @@ remove_cfg:
 		rm $(CONFIG_FILES_FILE); \
 	fi
 
-install: install_bin install_cfg
+PACMAN_DEPS = deno tree-sitter-cli nix
+install_deps:
+	# I am completely aware that this is a **bad** way to handle this. I should really
+	# define a pacman package to do this.
+	#
+	# Will probably do that later :idk:
+	sudo pacman -S $(PACMAN_DEPS)
+
+install: install_bin install_cfg install_deps
 
 remove: remove_bin remove_cfg
