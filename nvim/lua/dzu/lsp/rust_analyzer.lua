@@ -12,7 +12,7 @@ return {
             },
             cargo = {
                 -- allTargets = false,
-                allFeatures = true,
+                allFeatures = false,
             },
             completion = {
                 fullFunctionSignatures = {
@@ -72,7 +72,7 @@ return {
                 }
             },
             checkOnSave = {
-                allFeatures = true,
+                allFeatures = false,
                 command = "clippy",
                 extraArgs = {
                     '--',
