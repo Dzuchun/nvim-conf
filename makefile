@@ -13,6 +13,10 @@ remove_bin:
 		echo "Bin dir not set"; \
 		exit 1; \
 	fi
+	@if [ ! -e $(BIN_DIR) ]; then \
+		echo "Proposed bin dir does not exist"; \
+		exit 1; \
+	fi
 	@$(foreach fname,$(BIN_FILES),rm -vf $(BIN_DIR)/$(fname);)
 
 nvim/spell/uk.utf-8.spl:
