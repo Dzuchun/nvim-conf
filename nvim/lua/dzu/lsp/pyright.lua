@@ -96,7 +96,9 @@ return {
                 include = { "src/**/*.py" },
                 exclude = { "**/node_modules" },
                 ignore = { "**/node_modules" },
-                extraPaths = {},
+                extraPaths = {
+                    "/usr/include/Math"
+                },
                 typeCheckingMode = "strict",
                 -- typeshedPaths                default: []
                 useLibraryCodeForTypes = true,
