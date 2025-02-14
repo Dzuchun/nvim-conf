@@ -1,0 +1,4 @@
+-- (nix lsp)
+
+return {
+}

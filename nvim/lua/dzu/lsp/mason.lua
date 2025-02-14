@@ -6,6 +6,7 @@ local servers = {
     "clangd",        -- C
     "lua_ls",
     "hls",
+    "nil_ls",
 }
 
 local settings = {
