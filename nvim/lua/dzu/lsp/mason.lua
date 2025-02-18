@@ -7,6 +7,7 @@ local servers = {
     "lua_ls",
     "hls",
     "nil_ls",
+    "tinymist",
 }
 
 local settings = {
