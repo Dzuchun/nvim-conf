@@ -18,7 +18,7 @@ local function config()
         haskell = { "fourmolu" },
         lhaskell = { "fourmolu" },
         cabal = { "fourmolu" },
-        nix = { "nixfmt" },
+        -- nix = { "nixfmt" },
         cpp = { "clang-format" },
     }
 
