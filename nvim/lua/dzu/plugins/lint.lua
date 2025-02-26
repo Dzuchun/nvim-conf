@@ -5,7 +5,7 @@ local function config()
         return;
     end
 
-    local web_linters = { 'biomejs' }
+    local web_linters = { 'biome' }
 
 
     local linters_by_ft = {
@@ -17,6 +17,7 @@ local function config()
         haskell = { 'hlint' },
         lhaskell = { 'hlint' },
         cabal = { 'hlint' },
+        dockerfile = { "hadolint" },
     }
     -- add to tool list
     for _, lints in pairs(linters_by_ft) do
@@ -29,7 +30,7 @@ local function config()
 
     -- autolint on save
     vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {
-        pattern = { "*.js", "*.ts", "*.jsx", "*.tsx", "*.json", "*.hs" },
+        pattern = { "*.js", "*.ts", "*.jsx", "*.tsx", "*.json", "*.hs", "*Dockerfile*" },
         callback = function(_)
             lint.try_lint()
         end,
