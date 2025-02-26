@@ -8,6 +8,7 @@ local servers = {
     "hls",
     "nil_ls",
     "tinymist",
+    "dockerls",
 }
 
 local settings = {
