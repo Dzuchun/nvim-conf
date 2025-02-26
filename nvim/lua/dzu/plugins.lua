@@ -190,6 +190,7 @@ if not is_ok then
     return
 end
 
+ADDITIONAL_MASON_TOOLS = {}
 local plugins = {}
 for _, f in pairs(files) do
     local name = f['name']

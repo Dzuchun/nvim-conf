@@ -6,7 +6,9 @@ local function config()
     end
 
     local web_linters = { 'biomejs' }
-    lint.linters_by_ft = {
+
+
+    local linters_by_ft = {
         javascript = web_linters,
         javascriptreact = web_linters,
         typescript = web_linters,
@@ -16,6 +18,14 @@ local function config()
         lhaskell = { 'hlint' },
         cabal = { 'hlint' },
     }
+    -- add to tool list
+    for _, lints in pairs(linters_by_ft) do
+        for _, lnt in pairs(lints) do
+            ADDITIONAL_MASON_TOOLS[lnt] = lnt
+        end
+    end
+
+    lint.linters_by_ft = linters_by_ft
 
     -- autolint on save
     vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {
