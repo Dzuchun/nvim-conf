@@ -1,3 +1,15 @@
+local function names(linters_by_ft, field)
+    local res = {}
+    for ft, spec in pairs(linters_by_ft) do
+        if spec[field] ~= nil then
+            res[ft] = spec[field]
+        else
+            res[ft] = spec
+        end
+    end
+    return res
+end
+
 local function config()
     local is_ok, lint = pcall(require, 'lint')
     if not is_ok then
@@ -5,8 +17,7 @@ local function config()
         return;
     end
 
-    local web_linters = { 'biome' }
-
+    local web_linters = { mason = { 'biome' }, lint = { "biomejs" } }
 
     local linters_by_ft = {
         javascript = web_linters,
@@ -20,13 +31,13 @@ local function config()
         dockerfile = { "hadolint" },
     }
     -- add to tool list
-    for _, lints in pairs(linters_by_ft) do
+    for _, lints in pairs(names(linters_by_ft, "mason")) do
         for _, lnt in pairs(lints) do
             ADDITIONAL_MASON_TOOLS[lnt] = lnt
         end
     end
 
-    lint.linters_by_ft = linters_by_ft
+    lint.linters_by_ft = names(linters_by_ft, "lint")
 
     -- autolint on save
     vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {
