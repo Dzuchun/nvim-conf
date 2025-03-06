@@ -6,3 +6,6 @@ loc_nvim
 
 # Don't want to share spell dictionaries
 nvim/spell/*
+
+# Just randomly appeared in the project directory. Probably from jsx lsp or something
+package-lock.json
