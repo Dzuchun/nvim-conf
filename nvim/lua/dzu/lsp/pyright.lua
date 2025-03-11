@@ -103,7 +103,7 @@ return {
                 -- typeshedPaths                default: []
                 useLibraryCodeForTypes = true,
             },
-            pythonPath = "python",
+            pythonPath = "python3",
             venv = ".venv",
             venvPath = ".venv",
         }
