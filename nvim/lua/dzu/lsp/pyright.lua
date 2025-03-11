@@ -93,7 +93,7 @@ return {
                     reportUnusedVariable                = "none",
                     reportWildcardImportFromLibrary     = "warning",
                 },
-                include = { "src/**/*.py" },
+                include = { "src/**/*.py", "*.py" },
                 exclude = { "**/node_modules" },
                 ignore = { "**/node_modules" },
                 extraPaths = {
