@@ -97,14 +97,15 @@ return {
                 exclude = { "**/node_modules" },
                 ignore = { "**/node_modules" },
                 extraPaths = {
-                    "/usr/include/Math"
+                    ".venv/lib/python3.13/site-packages"
                 },
                 typeCheckingMode = "strict",
                 -- typeshedPaths                default: []
                 useLibraryCodeForTypes = true,
             },
             pythonPath = "python",
-            -- venvPath = "",
+            venv = ".venv",
+            venvPath = ".venv",
         }
     }
 }
