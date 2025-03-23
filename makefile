@@ -43,12 +43,14 @@ remove_cfg:
 	fi
 
 PACMAN_DEPS = deno tree-sitter-cli nix
+CARGO_BINS = nu nu_plugin_polars
 install_deps:
 	# I am completely aware that this is a **bad** way to handle this. I should really
 	# define a pacman package to do this.
 	#
 	# Will probably do that later :idk:
 	sudo pacman -S $(PACMAN_DEPS)
+	cargo install --locked $(CARGO_BINS)
 
 install: install_bin install_cfg install_deps
 

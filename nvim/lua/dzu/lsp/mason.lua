@@ -10,6 +10,9 @@ local servers = {
     "tinymist",
     "dockerls",
 }
+local nvimlsp_only_servers = {
+    "nushell",
+}
 
 local settings = {
     ui = {
@@ -44,7 +47,15 @@ end
 
 local opts = {}
 
-for _, server in pairs(servers) do
+local nvim_lsp_servers = {}
+for _, nlsp_s in pairs(nvimlsp_only_servers) do
+    table.insert(nvim_lsp_servers, nlsp_s)
+end
+for _, s in pairs(servers) do
+    table.insert(nvim_lsp_servers, s)
+end
+
+for _, server in pairs(nvim_lsp_servers) do
     opts = {
         on_attach = handlers.on_attach,
         capabilities = handlers.capabilities,

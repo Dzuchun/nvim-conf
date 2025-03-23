@@ -38,6 +38,7 @@ local function config()
             "vim",
             "vimdoc",
             "xml",
+            "nu",
         },
         sync_install = false,
         ignore_install = { "" }, -- List of parsers to ignore installing
