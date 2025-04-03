@@ -30,7 +30,7 @@ local options = {
     colorcolumn = '+1,+2', -- highlight 2 columns after textwidth -- add autocmp to disable this in readonly buffers
     textwidth = 90, -- default number of chars per line
     concealcursor = 'nc', -- simplify text that's not being selected or modified
-    conceallevel = 2, -- simplify more text (?)
+    conceallevel = 0, -- simplify more text (?)
     confirm = true, -- ask instead of failing
     expandtab = true, -- use spaces instead of tabs
     -- see cursor bind, diff
