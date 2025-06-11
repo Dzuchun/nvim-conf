@@ -9,3 +9,6 @@ nvim/spell/*
 
 # Just randomly appeared in the project directory. Probably from jsx lsp or something
 package-lock.json
+
+# stt model
+ggml-*.bin
