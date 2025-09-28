@@ -87,9 +87,11 @@ keymap(nm, "O", "O<esc>", opts)
 keymap(nm, "щ", "o<esc>", opts)
 keymap(nm, "Щ", "O<esc>", opts)
 
+-- git diff view
 keymap(nm, "<leader>\\", ":DiffviewOpen<CR>", opts)
 keymap(nm, "<leader>|", ":DiffviewClose<CR>", opts)
 keymap(nm, "<leader>g", ":diffget<CR>", opts)
+keymap(nm, "<leader>p", ":diffput<CR>", opts)
 keymap(nm, "<leader><C-g>", ":DiffviewRefresh<CR>", opts)
 
 keymap(sm, "-", "<Nop>", opts)
