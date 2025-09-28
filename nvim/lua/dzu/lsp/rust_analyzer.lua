@@ -66,8 +66,9 @@ return {
                     enable = true -- let's try that :idk:
                 }
             },
-            checkOnSave = {
-                allFeatures = false,
+            checkOnSave = true,
+            check = {
+                -- allFeatures = false,
                 command = "clippy",
                 extraArgs = {
                     '--',
