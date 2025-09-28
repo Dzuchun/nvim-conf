@@ -93,8 +93,3 @@ keymap(nm, "<leader>|", ":DiffviewClose<CR>", opts)
 keymap(nm, "<leader>g", ":diffget<CR>", opts)
 keymap(nm, "<leader>p", ":diffput<CR>", opts)
 keymap(nm, "<leader><C-g>", ":DiffviewRefresh<CR>", opts)
-
-keymap(sm, "-", "<Nop>", opts)
-keymap(sm, "=", "<Nop>", opts)
-keymap(sm, "<C-->", "<ESC>i<C-->", { silent = true })
-keymap(sm, "<C-=>", "<ESC>a<C-=>", { silent = true })
