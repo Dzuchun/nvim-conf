@@ -18,11 +18,6 @@ return {
                 fullFunctionSignatures = {
                     enable = true -- show me bounds(?)
                 },
-                snippets = {
-                    custom = {
-                        -- custom completion snippets here!
-                    }
-                },
                 termSearch = {
                     enable = true, -- nested completions?
                 },
