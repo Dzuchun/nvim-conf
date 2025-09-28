@@ -42,7 +42,7 @@ remove_cfg:
 		rm $(CONFIG_FILES_FILE); \
 	fi
 
-PACMAN_DEPS = deno tree-sitter-cli nix
+PACMAN_DEPS = deno tree-sitter-cli nix luarocks
 CARGO_BINS = nu nu_plugin_polars
 install_deps:
 	# I am completely aware that this is a **bad** way to handle this. I should really
