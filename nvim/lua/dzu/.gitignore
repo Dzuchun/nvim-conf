@@ -1,0 +1,3 @@
+plugins/*.lua_
+snippets/*.lua_
+lsp/*.lua_
