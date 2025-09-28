@@ -34,17 +34,12 @@ require("mason-lspconfig").setup({
     automatic_installation = true,
 })
 
-local is_ok, lspconfig = pcall(require, "lspconfig")
-if not is_ok then
-    vim.notify("failed to find lspconfig")
-    return
-end
-
 local is_ok, handlers = pcall(require, "dzu.lsp.handlers")
 if not is_ok then
     vim.notify("failed to initialize LSP handlers")
     return
 end
+handlers.setup()
 
 local opts = {}
 
@@ -58,7 +53,7 @@ end
 
 for _, server in pairs(nvim_lsp_servers) do
     opts = {
-        on_attach = handlers.on_attach,
+        -- on_attach = handlers.on_attach,
         capabilities = handlers.capabilities,
     }
 
@@ -71,5 +66,6 @@ for _, server in pairs(nvim_lsp_servers) do
         vim.notify("Failed to initialize config for " .. server)
     end
 
-    lspconfig[server].setup(opts)
+    vim.lsp.config(server, opts)
+    vim.lsp.enable(server, true)
 end
