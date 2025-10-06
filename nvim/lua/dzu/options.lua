@@ -75,3 +75,6 @@ end
 
 -- disable mouse
 vim.cmd(":set mouse=")
+
+-- enable automatic filetype detection
+vim.cmd(":filetype on")
