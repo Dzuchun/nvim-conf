@@ -1,2 +1,4 @@
 #!/bin/bash
-NVIM_APPNAME=ndzu nvim $@
+NVIM_APPNAME=ndzu \
+JDTLS_PATH=/home/dzu/.local/lib/jdtls/ \
+nvim $@
