@@ -9,7 +9,7 @@ local servers = {
     "nil_ls",
     "tinymist",
     "dockerls",
-    "jdtls",
+    -- "jdtls",
 }
 local nvimlsp_only_servers = {
     "nushell",
