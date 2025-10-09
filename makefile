@@ -26,7 +26,7 @@ nvim/spell/uk.utf-8.spl:
 
 nvim/other/eclipse-java-google-style.xml:
 	@wget https://raw.githubusercontent.com/google/styleguide/refs/heads/gh-pages/eclipse-java-google-style.xml
-	@mkdir nvim/other
+	@mkdir -p nvim/other
 	@mv eclipse-java-google-style.xml nvim/other
 
 CONFIG_FILES = $(shell cd nvim; find -name "*.lua") spell/uk.utf-8.spl other/eclipse-java-google-style.xml
