@@ -48,16 +48,8 @@ remove_cfg:
 		rm $(CONFIG_FILES_FILE); \
 	fi
 
-PACMAN_DEPS = deno tree-sitter-cli nix luarocks jdk21-openjdk 
-CARGO_BINS = nu nu_plugin_polars
-install_deps:
-	# I am completely aware that this is a **bad** way to handle this. I should really
-	# define a pacman package to do this.
-	#
-	# Will probably do that later :idk:
-	sudo pacman -S $(PACMAN_DEPS)
-	cargo install --locked $(CARGO_BINS)
-
-install: install_bin install_cfg install_deps
+# PACMAN_DEPS: deno tree-sitter-cli nix luarocks jdk21-openjdk 
+# CARGO_BINS: nu nu_plugin_polars
+install: install_bin install_cfg
 
 remove: remove_bin remove_cfg
